@@ -5,7 +5,7 @@
     <title>Document</title>
 </head>
 <body>
- <?php   
+ <?php
 
     $name = "Eric";
     $number = 23;
