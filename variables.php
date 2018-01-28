@@ -17,6 +17,11 @@
 
     // the "." is for contatenation
     echo $name . " " . $NUMBeR;
+
+    //using an html tag inside php
+    $name = "<h1>Hello!</h1>";
+    echo $name;
+
 ?>
 </body>
 </html>
