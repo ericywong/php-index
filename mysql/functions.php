@@ -9,6 +9,22 @@ function createRows() {
         $username = $_POST['username'];
         $password = $_POST['password'];
 
+        //Allows for special characters to be strings/protects unwarranted queries?
+        $username = mysqli_real_escape_string($connection, $username);
+        $password = mysqli_real_escape_string($connection, $password);
+
+        //adding Blowfish encryption to passwords entered
+        //$10$ it will tell the crypt function to run the hash 10times 
+        $hashFormat = "$2y$10$";
+        //salt to be added at the end of the hash
+        $salt = "iusesomecrazystrings22";
+        //putting the hash and salt together
+        $hashF_and_salt = $hashFormat . $salt;
+
+        //encryption with function crypt
+        //pass in the password first, and then the salt
+        $password =  crypt($password,$hashF_and_salt);
+        
 
         //saving the sql query into a variable
         $query = "INSERT INTO users(username,password) ";
